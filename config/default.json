@@ -1,5 +1,5 @@
 {
-	"POSTGRES_URI": "postgres://onerent:12345@localhost:5432/onerent",
+  "POSTGRES_URI": "postgres://onerent:12345@localhost:5432/onerent",
   "ENABLE_FIXTURES": false,
   "APP_PORT": 3000
 }
