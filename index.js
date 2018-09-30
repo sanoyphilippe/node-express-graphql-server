@@ -8,6 +8,7 @@ const PORT = typeof config.get('APP_PORT') !== 'undefined' ? config.get('APP_POR
 
 const app = Express();
 
+// graphql search api for users and properties
 app.use('/search', GraphHTTP({
   schema: Schema,
   // graphiql: true,
