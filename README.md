@@ -21,8 +21,6 @@ See https://www.postgresql.org for details about postgres
 
 A step by step series of examples that tell you how to get a development env running.
 
-Note: these instructions are tailor made for Linux systems.
-
 First we need to install the node_modules.
 So change to the directory created in your system, after cloning this repository.
 
