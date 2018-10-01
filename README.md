@@ -38,12 +38,15 @@ It contains the following default values.
 {
   "POSTGRES_URI": "postgres://onerent:12345@localhost:5432/onerent",
   "ENABLE_FIXTURES": false,
+  "ENABLE_GRAPHIQL": false,
   "APP_PORT": 3000
 }
 ```
 `POSTGRES_URI` defines the URI for our postgres db
 
 `ENABLE_FIXTURES` is an optional feature to generate some test data on your db (the generated data uses uuidv4 for the primaryKey)
+
+`ENABLE_GRAPHIQL` is an optional feature to enable graphiql on the /search endpoint.
 
 `APP_PORT` is simply the port in which the app will run on your system.
 
@@ -59,11 +62,13 @@ Now after doing all of the above, simply run the command
 npm start
 ```
 
-This app uses `graphiql` which gives us some nice interface to test our API
-
 If you're running the app on your local system and you just used the default values, open up your web browser and go to the following url `http://localhost:3000/search`
 
-On the left hand side editor you can place the following query
+#### GRAPHIQL
+
+This app optionally uses `graphiql` which gives us some nice interface to test our API
+
+If you enabled graphiql via setting `ENABLE_GRAPHIQL` to true, then on the left hand side editor you can place the following query
 ```
 {
   users {
@@ -81,10 +86,6 @@ On the left hand side editor you can place the following query
 You should now see the results on the right hand side of the screen, this is what is returned to clients when they query your graphql end-point.
 
 At the top right corner there is a button `docs`, clicking it would show some more info regarding the schema for this end-point.
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Authors
 
