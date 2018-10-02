@@ -15,7 +15,7 @@ git clone https://github.com/sanoyphilippe/tworent-backend.git
 
 ### Prerequisites
 
-You must have npm and nodejs installed on your local system
+You must have npm and nodejs installed on your local system.
 See https://nodejs.org for installation instructions
 
 Also you must have a Postgres db already setup.
