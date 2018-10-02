@@ -1,6 +1,8 @@
-# node-express-graphql
+# Tworent-backend
 
-A sample web server created using NodeJS with Express framework, GraphQL, Sequelize, and utilizing Postgres for the database.
+Tworent is the bigger, better, and badder version of [Onerent](https://www.onerent.co/)
+Tworent uses bleeding edge technologies using NodeJS with Express framework, GraphQL, Sequelize, and utilizing Postgres for the database.
+Tworent is the + 1 version and the future of all online renting websites.
 
 ## Getting Started
 
@@ -94,7 +96,7 @@ See also the list of [contributors](https://github.com/your/project/contributors
 ## Acknowledgments
 
 * Anyone whose code was used
-* Onerent - for giving me this test
+* Onerent - for giving me this test and for paving the way for the success of Tworent
 * Google - for helping me find learning resources
 * Pldt - for my internet connection
 * To anyone else who is reading this
