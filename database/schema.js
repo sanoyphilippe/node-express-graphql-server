@@ -143,10 +143,11 @@ const Query = new GraphQLObjectType({
         if (args.text && args.text.length > 0) {
           // we use space as a delimiter
           const keywords = args.text.trim().split(' ').map(word => `${word}%`);
+          const containsKeywords = keywords.map(word => `%${word}`);
           return Db.models.property.findAll({
             where: {
               [Op.or]: [{ city: { [Op.iLike]: { [Op.any]: keywords } } },
-                { street: { [Op.iLike]: { [Op.any]: keywords } } },
+                { street: { [Op.iLike]: { [Op.any]: containsKeywords } } },
                 { zip: { [Op.iLike]: { [Op.any]: keywords } } },
                 { state: { [Op.iLike]: { [Op.any]: keywords } } },
                 Sequelize.where(
