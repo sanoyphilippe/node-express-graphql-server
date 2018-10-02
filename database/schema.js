@@ -5,7 +5,12 @@ import {
   GraphQLList,
   GraphQLSchema,
 } from 'graphql';
+import Sequelize from 'sequelize';
 import Db from './db';
+
+// for some reason object destructuring does not work in the case for this usage
+// do not destructure.
+const Op = Sequelize.Op;
 
 const Property = new GraphQLObjectType({
   name: 'Property',
@@ -88,26 +93,33 @@ const Query = new GraphQLObjectType({
     users: {
       type: new GraphQLList(User),
       args: {
-        id: {
-          type: GraphQLString,
-        },
         firstName: {
           type: GraphQLString,
         },
         lastName: {
           type: GraphQLString,
         },
+        text: {
+          type: GraphQLString,
+        },
       },
       resolve(root, args) {
+        if (args.text && args.text.length > 0) {
+          // using whitespace as a a delimiter
+          const keywords = args.text.trim().split(' ').map(word => `${word}%`);
+          return Db.models.user.findAll({
+            where: {
+              [Op.or]: [{ firstName: { [Op.iLike]: { [Op.any]: keywords } } },
+                { lastName: { [Op.iLike]: { [Op.any]: keywords } } }],
+            },
+          });
+        }
         return Db.models.user.findAll({ where: args });
       },
     },
     properties: {
       type: new GraphQLList(Property),
       args: {
-        id: {
-          type: GraphQLString,
-        },
         street: {
           type: GraphQLString,
         },
@@ -123,8 +135,27 @@ const Query = new GraphQLObjectType({
         rent: {
           type: GraphQLFloat,
         },
+        text: {
+          type: GraphQLString,
+        },
       },
       resolve(root, args) {
+        if (args.text && args.text.length > 0) {
+          // we use space as a delimiter
+          const keywords = args.text.trim().split(' ').map(word => `${word}%`);
+          return Db.models.property.findAll({
+            where: {
+              [Op.or]: [{ city: { [Op.iLike]: { [Op.any]: keywords } } },
+                { street: { [Op.iLike]: { [Op.any]: keywords } } },
+                { zip: { [Op.iLike]: { [Op.any]: keywords } } },
+                { state: { [Op.iLike]: { [Op.any]: keywords } } },
+                Sequelize.where(
+                  Sequelize.cast(Sequelize.col('property.rent'), 'text'),
+                  { [Op.iLike]: { [Op.any]: keywords } },
+                )],
+            },
+          });
+        }
         return Db.models.property.findAll({ where: args });
       },
     },
