@@ -1,7 +1,9 @@
 # Tworent-backend
 
 Tworent is the bigger, better, and badder version of [Onerent](https://www.onerent.co/)
+
 Tworent uses bleeding edge technologies using NodeJS with Express framework, GraphQL, Sequelize, and utilizing Postgres for the database.
+
 Tworent is the + 1 version and the future of all online renting websites.
 
 ## Getting Started
