@@ -10,7 +10,7 @@ Tworent is the + 1 version and the future of all online renting websites.
 
 Clone this repository on your local system
 ```
-git clone https://github.com/sanoyphilippe/node-express-graphql-server.git
+git clone https://github.com/sanoyphilippe/tworent-backend.git
 ```
 
 ### Prerequisites
